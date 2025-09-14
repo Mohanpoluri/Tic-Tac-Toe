@@ -56,7 +56,6 @@ newGame.addEventListener("click", () => {
 });
 
 
-
 const checkWinner = () => {
   for (let pattern of arr) {
     let pos1Val = btns[pattern[0]].innerText;
@@ -69,5 +68,18 @@ const checkWinner = () => {
         return; 
       }
     }
+  }
+
+  let allFilled = true;
+  btns.forEach((box) => {
+    if (box.innerText === "") {
+      allFilled = false;
+    }
+  });
+
+  if (allFilled) {
+    mes.innerText = "It's a Draw!";
+    mes.classList.remove("hide");
+    disableBtns();
   }
 };
